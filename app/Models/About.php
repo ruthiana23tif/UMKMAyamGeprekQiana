@@ -12,7 +12,8 @@ class About extends Model
 
     // Kolom yang diizinkan untuk mass assignment
     protected $fillable = [
-        'judul', // Tambahkan judul
+        'judul',
+        'deskrips', // Tambahkan judul
     ];
 
     public function user(): BelongsTo
