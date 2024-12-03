@@ -21,7 +21,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
-
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
