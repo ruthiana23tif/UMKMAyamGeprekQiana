@@ -17,10 +17,7 @@
                 <p>Apabila Anda memiliki pertanyaan atau masalah, Anda dapat menghubungi kami dengan mengisi formulir kontak, menelepon kami, datang langsung ke toko kami, menemukan kami di media sosial lain, atau Anda dapat mengirim email langsung ke alamat:</p>
                 <p><strong>📞 0812-1111-8456</strong></p>
                 <p><strong>📧 geprekqiana@gmail.com</strong></p>
-                <p>🏢 Gedung Graha Ganesha, Lantai 1 Suite 120 & 130<br>
-                   Jl. Hayam Wuruk No. 28, RT 014/ RW 001,<br>
-                   Kelurahan Kebon Klapa, Kecamatan Gambir,<br>
-                   Jakarta Pusat, DKI Jakarta</p>
+                <p>🏢 Jl. Kartika Sari, Umban Sari, Kec. Rumbai, Kota Pekanbaru, Riau 28266<br></p>
             </div>
 
             <!-- Contact Form -->
