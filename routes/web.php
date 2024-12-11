@@ -2,6 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
+Route::get('/test-upload', function () {
+    $path = 'public/test.txt'; // Lokasi file di storage/app/public
+    Storage::put($path, 'Ini adalah file uji coba.');
+    return "File berhasil disimpan di: " . Storage::url($path);
+});
+
 
 Route::get('/', function () {
     return view('welcome');

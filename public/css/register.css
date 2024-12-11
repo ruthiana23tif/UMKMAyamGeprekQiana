@@ -1,0 +1,121 @@
+/* Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../build/assets/abc.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Guest layout */
+.guest-layout {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form .input-error {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Button Styling */
+form button {
+    background-color: #ff0707;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #e0a800;
+}
+
+/* Link Styling */
+form a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Align elements in form footer */
+form .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .guest-layout {
+        width: 90%;
+        padding: 20px;
+    }
+}
+/* Logo Styling */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-logo {
+    max-width: 100px; /* Atur ukuran logo */
+    height: auto;
+    display: inline-block;
+}
+/* Form Title Styling */
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Pusatkan teks secara horizontal */
+    margin-top: 10px;   /* Beri jarak dari elemen di atasnya */
+    margin-bottom: 20px; /* Beri jarak dari elemen di bawahnya */
+}
