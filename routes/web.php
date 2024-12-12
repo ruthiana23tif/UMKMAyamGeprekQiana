@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\TestimoniController;
+
+Route::resource('testimoni', TestimoniController::class);
+
 
 Route::get('/test-upload', function () {
     $path = 'public/test.txt'; // Lokasi file di storage/app/public
