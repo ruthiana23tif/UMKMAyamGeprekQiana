@@ -35,7 +35,7 @@
                     <th>Judul</th>
                     <th>Gambar</th>
                     <th>Deskripsi</th>
-                    <th>Diskon (%)</th>
+                    <th>Diskon(%)</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
                     <th>Aksi</th>
