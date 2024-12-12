@@ -4,8 +4,7 @@
             @csrf
             @method('PUT')
 
-            <input type="text" name="question" id="question" placeholder="question anda" class="block w-full mt-4 border-gray-300 rounded-md">{{ old('question',$questionAnswer->question) }}
-            <x-input-error :messages=" $errors->get('nama') " class="mt-2"/>
+            <textarea name="question" id="question" placeholder="question anda" class="block w-full mt-4 border-gray-300 rounded-md">{{ old('question',$questionAnswer->question) }}</textarea>
 
             <textarea name="answer" id="answer" placeholder="answer anda" class="block w-full mt-4 border-gray-300 rounded-md">{{ old('answer',$questionAnswer->answer) }}</textarea>
 
