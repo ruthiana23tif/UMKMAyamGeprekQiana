@@ -22,7 +22,7 @@
 
                     <!-- Kode Navigation Link untuk Promo -->
                     <x-nav-link :href="route('promo.index')" :active="request()->routeIs('promo.index')">
-                        {{ __('Promo') }}
+                        {{ __(' Promo ') }}
                     </x-nav-link>
 
 
