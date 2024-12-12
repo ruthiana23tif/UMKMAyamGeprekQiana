@@ -79,7 +79,7 @@
             <ul>
                 <h2> Ayam Geprek Qiana </h2>
                 <li><a href="#">Menu</a></li><br>
-                <li><a href="#">Promo</a></li><br>
+                <li><a href="{{ route('promo.index') }}">Promo</a></li><br>
                 <li><a href="#">contact us</a></li><br>
                 <li><a href="{{ route('dashboard') }}">Go to Dashboard</a></li>
             </ul>

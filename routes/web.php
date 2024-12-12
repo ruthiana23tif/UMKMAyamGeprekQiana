@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PromoController;
 
 
 Route::get('/', function () {
@@ -22,4 +23,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-
+Route::resource('/promo', PromoController::class)->only(['index','store','edit','update','create','destroy']);
