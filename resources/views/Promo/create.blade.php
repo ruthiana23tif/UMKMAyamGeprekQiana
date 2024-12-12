@@ -34,7 +34,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="discount" class="form-label">Diskon (%)</label>
+                <label for="discount" class="form-label">Diskon(%)</label>
                 <input type="number" name="discount" id="discount" class="form-control" value="{{ old('discount') }}" required>
             </div>
 
