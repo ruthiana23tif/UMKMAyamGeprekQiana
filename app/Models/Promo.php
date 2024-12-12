@@ -13,6 +13,6 @@ class Promo extends Model
     protected $table = 'promo';
 
     // Kolom yang bisa diisi secara massal
-    protected $fillable = ['title', 'description', 'discount', 'start_date', 'end_date', 'gambar'];
+    protected $fillable = ['title','description','discount','start_date','end_date','gambar'];
 
 }
