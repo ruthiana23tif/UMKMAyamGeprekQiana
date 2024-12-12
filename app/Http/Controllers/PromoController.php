@@ -48,9 +48,9 @@ class PromoController extends Controller
 
         $promo->save();
 
-        return redirect()->route('promo.index')->with('success', 'Promo berhasil ditambahkan.');
+        return redirect()->route('promo.index')->with('success', 'romo berhasil ditambahkan');
     }
-    
+
     /**
      * Display the specified resource.
      */
@@ -91,7 +91,7 @@ class PromoController extends Controller
 
         $promo->save();
 
-        return redirect()->route('promo.index')->with('success', 'Promo berhasil diperbaharui.');
+        return redirect()->route('promo.index')->with('success', 'Promo berhasil diperbaharui');
 
     }
 
@@ -102,7 +102,7 @@ class PromoController extends Controller
     {
         $promo->delete();
 
-        return redirect()->route('promo.index')->with('success', 'Promo berhasil dihapus.');
+        return redirect()->route('promo.index')->with('success', 'Promo berhasil dihapus');
 
     }
 }
