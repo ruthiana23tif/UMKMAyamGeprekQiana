@@ -9,15 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class About extends Model
 {
     use HasFactory;
+    protected $table = 'about';
 
-    // Kolom yang diizinkan untuk mass assignment
-    protected $fillable = [
-        'judul',
-        'deskrips', // Tambahkan judul
-    ];
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = ['title', 'description', 'gambar'];
 }

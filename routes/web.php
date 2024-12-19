@@ -22,5 +22,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::resource('promo', PromoController::class)->only(['index','store','edit','update','create','destroy']);
+Route::resource('/promo', PromoController::class)->only(['index','store','edit','update','create','destroy']);
+
+Route::resource('/about', AboutController::class)->only(['index','store','edit','update','create','destroy']);

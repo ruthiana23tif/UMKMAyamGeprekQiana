@@ -1,79 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Promo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/promo.css') }}">
-</head>
-
-<body>
-    <div class="max-w-4xl mx-auto py-6 ">
-        <h1 class="text-2xl font-bold mb-4 text-center">Daftar Promo</h1>
+<x-app-layout>
+    <div class="max-w-4xl mx-auto py-6">
+        <h1 class="text-2xl font-bold mb-4">Daftar Promo</h1>
 
         @if (session('success'))
-            <div class="alert alert-success text-center">
+            <div class="bg-green-500 text-white p-3 mb-4">
                 {{ session('success') }}
             </div>
         @endif
 
         @if (session('error'))
-            <div class="alert alert-danger text-center">
+            <div class="bg-red-500 text-white p-3 mb-4">
                 {{ session('error') }}
             </div>
         @endif
 
+        <a href="{{ route('promo.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mb-4">
+            Tambah Promo
+        </a>
 
-        <a href="{{ route('promo.create') }}" class="btn btn-primary mb-2">Tambah Promo</a>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Judul</th>
-                    <th>Gambar</th>
-                    <th>Deskripsi</th>
-                    <th>Diskon(%)</th>
-                    <th>Tanggal Mulai</th>
-                    <th>Tanggal Berakhir</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($promo as $promo)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $promo->title }}</td>
-                        <td>
-                            @if ($promo->gambar)
-                                <img src="{{ Storage::url($promo->gambar) }}" width="100">
-                            @else
-                                <span>Tidak ada gambar</span>
-                            @endif
-                        </td>
-                        <td>{{ $promo->description }}</td>
-                        <td>{{ $promo->discount }}</td>
-                        <td>{{ $promo->start_date }}</td>
-                        <td>{{ $promo->end_date }}</td>
-                        <td>
-
-                            <a href="{{ route('promo.edit', $promo->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{ route('promo.destroy', $promo->id) }}" method="POST" class="d-inline">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            @foreach ($promo as $item)
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="{{ Storage::url($item->gambar) }}" class="w-full h-48 object-cover" alt="{{ $item->title }}" />
+                    <div class="p-4">
+                        <h2 class="text-lg font-bold">{{ $item->title }}</h2>
+                        <p class="text-gray-600 mt-2">{{ $item->description }}</p>
+                        <p class="text-gray-500 text-sm mt-1">Diskon: {{ $item->discount }}%</p>
+                        <p class="text-gray-500 text-sm">Berlaku: {{ $item->start_date }} - {{ $item->end_date }}</p>
+                        <div class="mt-4">
+                            <a href="{{ route('promo.edit', $item->id) }}" class="text-blue-500 hover:underline">Edit</a>
+                            <form action="{{ route('promo.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus promo ini?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Yakin ingin menghapus promo ini?')">Hapus</button>
+                                <button type="submit" class="text-red-500 hover:underline ml-2">Hapus</button>
                             </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-
-        <footer>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        {{-- <footer>
             <div class="social-icons">
                 <img src="storage/images/LOGO UMKM.png" alt="Logo Ayam Geprek Qiana" width="200" height="200">
             </div>
@@ -83,8 +49,7 @@
                 </p>
                 <div class="social-icons">
                     <a href=" " target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                            alt="Instagram">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
                     </a>
                     <a href="https://wa.me/08909272987" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -99,14 +64,12 @@
                 <ul>
                     <h2> Ayam Geprek Qiana </h2>
                     <li><a href="#">Menu</a></li><br>
-                    <li><a href="#">Promo</a></li><br>
+                    <li><a href="{{ route('promo.index') }}">Promo</a></li><br>
                     <li><a href="#">contact us</a></li><br>
                     <li><a href="{{ route('dashboard') }}">Go to Dashboard</a></li>
                 </ul>
             </div>
 
-        </footer>
+        </footer> --}}
     </div>
-</body>
-
-</html>
+</x-app-layout>

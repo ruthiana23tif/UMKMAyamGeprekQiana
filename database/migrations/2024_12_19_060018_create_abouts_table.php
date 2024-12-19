@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('about', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->string('gambar')->nullable(); // Kolom untuk menyimpan gambar
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('about');
