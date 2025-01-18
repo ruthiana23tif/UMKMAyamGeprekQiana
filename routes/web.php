@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('menu', MenuController::class)->only(['index', 'store','edit','destroy','update']);
+Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+Route::get('/menu/{id}/edit', [MenuController::class, 'edit'])->name('menu.edit');
 
 Route::resource('question_answer', QuestionAnswerController::class)->only(['index','store','edit','update','destroy']);
 require __DIR__.'/auth.php';

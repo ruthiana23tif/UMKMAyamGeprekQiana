@@ -5,26 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-         .navbar {
-          background-color: #af1515;
-          color: #ffffff;
-        }
-        .navbar-brand{
-          color:#ffffff;
-        }
-        .nav-link{
-            color:#ffffff;
-            cursor: pointer;
-        }
-        .navbar-toggler{
-            background-color: #ffffff;
-        }
-        .btn-mobile{
-            background-color: #14ce07;
-            color: #ffffff;
-        }
-    </style>
+
 </head>
     <div class="container mt-4">
         <h1>Edit Menu</h1>

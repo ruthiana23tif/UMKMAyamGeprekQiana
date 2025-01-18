@@ -12,26 +12,9 @@
             object-fit: cover;
         }
          .card{
-             border-radius: 10px;
+             border-radius: 15px;
          }
-        .navbar {
-          background-color: #af1515;
-          color: #ffffff;
-        }
-        .navbar-brand{
-          color:#ffffff;
-        }
-        .nav-link{
-            color:#ffffff;
-            cursor: pointer;
-        }
-        .navbar-toggler{
-            background-color: #ffffff;
-        }
-        .btn-mobile{
-            background-color: #14ce07;
-            color: #ffffff;
-        }
+
         .menu-card-container{
             display: flex;
             flex-wrap: wrap;
@@ -39,9 +22,9 @@
             gap: 20px; /* Untuk memberikan jarak antar card */
         }
         .menu-card{
-             width: 220px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
+            width: 220px;
+            background-color: #f8fcff;
+            border-radius: 25px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .menu-card:hover {
@@ -60,7 +43,7 @@
              margin-top: 20px;
         }
         .menu-container {
-            background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+            background: linear-gradient(to bottom, #ffffff, #f9f7f7);
              padding-bottom: 30px;
          }
          .menu-card-action{
@@ -68,81 +51,7 @@
              display: flex;
              justify-content: space-between;
          }
-          .footer {
-            background-color: #af1515;
-            color: #f7f7f7;
-            padding: 30px 0;
-             font-size: 14px;
-        }
-         .footer-container{
-             display: flex;
-             align-items: center;
-            justify-content: space-between;
-            padding: 0 15px;
-         }
-       .footer h5{
-            font-weight: bold;
-       }
-         .footer-link {
-           margin-left: 20px;
-             display: block;
-        }
-        .footer-link a {
-           color: #f8f8f8;
-            text-decoration: none;
-        }
-        .footer-link a:hover{
-           color: #3043f0;
-        }
-       .footer-social a {
-            color: #f9f9f9;
-             font-size: 20px;
-            margin-right: 15px;
-            text-decoration: none;
-        }
-        .footer-social a:hover{
-           color: #a8b4ad;
-        }
-         .footer-copyright{
-            text-align: left;
-             margin-bottom: 15px;
-         }
-        .footer-about-link{
-           font-size: 1.2em;
-         }
-        .footer-about-link a{
-            margin-right: 10px;
-        }
-        .footer-items{
-            margin-bottom: 10px;
-        }
-        .footer-about-section{
-           display: flex;
-           flex-direction: column;
-            justify-content: space-between;
-           height: 100%;
-            text-align: left;
 
-        }
-        .footer-customer-section{
-           display: flex;
-           flex-direction: column;
-           height: 100%;
-            justify-content: space-evenly;
-        }
-        .footer-social-section{
-           display: flex;
-           flex-direction: column;
-            justify-content: center;
-           align-items: center;
-          height: 100%;
-           margin-left: auto;
-        }
-         .footer-content{
-             display: flex;
-           gap: 50px;
-          align-items: center;
-        }
          .search-bar-container {
           margin: 10px 0;
           padding: 5px 0;
@@ -151,7 +60,7 @@
            align-items: center;
          }
           .search-bar-container input{
-              border: 1px solid #ddd;
+             border: 1px solid #ddd;
              border-radius: 4px;
              padding: 10px;
              width: 300px;
@@ -169,7 +78,8 @@
     </style>
 </head>
 
-     <div class="container">
+<body>
+    <div class="container">
          <div class="search-bar-container">
             <form action="{{ route('menu.index') }}" method="GET">
                <input type="text" placeholder="Cari menu..." name="search">
@@ -208,13 +118,14 @@
         <div class="menu-container">
            <h1 class="mt-4">Menu Makanan</h1>
             <div class="menu-card-container">
+                @if($menus->count() > 0)
                 @foreach($menus as $menu)
                     <div class="menu-card">
-                         @if($menu->gambar)
-                            <img src="{{ asset('image/' . $menu->gambar) }}" class="card-img-top" alt="{{ $menu->nama }}">
-                         @else
-                           <img src="https://placehold.co/600x400/ededed/4b4b4b?text=No+Image" class="card-img-top" alt="No Image">
-                         @endif
+                        @if($menu->gambar)
+                        <img src="{{ asset('image/' . $menu->gambar) }}" class="card-img-top" alt="{{ $menu->nama }}">
+                     @else
+                       <img src="https://placehold.co/600x400/ededed/4b4b4b?text=No+Image" class="card-img-top" alt="No Image">
+                     @endif
                         <div class="card-body">
                             <div>
                                 <h5 class="card-title">{{ $menu->nama }}</h5>
@@ -232,6 +143,9 @@
                         </div>
                     </div>
                 @endforeach
+               @else
+                 <p>Menu Yang Anda Cari Tidak Ditemukan</p>
+               @endif
             </div>
         </div>
     </div>

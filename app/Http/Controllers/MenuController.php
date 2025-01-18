@@ -4,20 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File; // Tambahkan ini
 
 class MenuController extends Controller
 {
     public function index(Request $request)
     {
-        $search = $request->input('search');
+         $search = $request->input('search');
 
         $menus = Menu::when($search, function ($query, $search) {
                 return $query->where('nama', 'like', "%{$search}%")
                              ->orWhere('deskripsi', 'like', "%{$search}%");
              })->get();
 
-
         return view('menu.index', compact('menus'));
+    }
+
+    public function edit($id)
+    {
+        $menu = Menu::findOrFail($id);
+        return view('menu.edit', compact('menu'));
     }
 
     public function store(Request $request)
@@ -34,20 +40,15 @@ class MenuController extends Controller
         $menu->harga = $request->harga;
 
         if ($request->hasFile('gambar')) {
-           $image = $request->file('gambar');
-           $imageName = time() . '.' . $image->getClientOriginalExtension();
-           $image->storeAs('public', $imageName);
-           $menu->gambar = $imageName;
+            $image = $request->file('gambar');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('image'); // Path ke public/image
+            $image->move($destinationPath, $imageName); // Simpan di public/image
+            $menu->gambar = $imageName;
         }
         $menu->save();
 
         return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan!');
-    }
-
-    public function edit($id)
-    {
-         $menu = Menu::findOrFail($id);
-         return view('menu.edit', compact('menu'));
     }
 
     public function update(Request $request, $id)
@@ -63,28 +64,35 @@ class MenuController extends Controller
         $menu->deskripsi = $request->deskripsi;
         $menu->harga = $request->harga;
 
-         if ($request->hasFile('gambar')) {
-            if($menu->gambar && file_exists(storage_path('app/public/' . $menu->gambar))){
-                unlink(storage_path('app/public/' . $menu->gambar));
+        if ($request->hasFile('gambar')) {
+            // Delete the old image if exists
+            if($menu->gambar){
+               $oldImagePath = public_path('image/' . $menu->gambar);
+               if(File::exists($oldImagePath)){
+                    File::delete($oldImagePath);
+               }
             }
-           $image = $request->file('gambar');
-           $imageName = time() . '.' . $image->getClientOriginalExtension();
-           $image->storeAs('public', $imageName);
-           $menu->gambar = $imageName;
+            $image = $request->file('gambar');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('image');
+            $image->move($destinationPath, $imageName);
+            $menu->gambar = $imageName;
         }
-        $menu->save();
 
+        $menu->save();
         return redirect()->route('menu.index')->with('success', 'Menu berhasil diupdate!');
     }
 
     public function destroy($id)
     {
-        $menu = Menu::findOrFail($id);
-         if($menu->gambar && file_exists(storage_path('app/public/' . $menu->gambar))){
-                unlink(storage_path('app/public/' . $menu->gambar));
-             }
-        $menu->delete();
-
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus!');
-    }
+       $menu = Menu::findOrFail($id);
+       if($menu->gambar){
+        $oldImagePath = public_path('image/' . $menu->gambar);
+        if(File::exists($oldImagePath)){
+             File::delete($oldImagePath);
+        }
+      }
+       $menu->delete();
+       return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus!');
+   }
 }
