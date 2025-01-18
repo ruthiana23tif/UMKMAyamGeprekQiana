@@ -20,7 +20,7 @@
                         height="300"
                         frameborder="0"
                         style="border:0"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.446985122184!2d101.4318536750758!3d0.539188363518004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a9d0d75b026d%3A0xd6a921283c54a247!2sGeprek%20Qiana!5e0!3m2!1sid!2sid!4v1711010841753!5m2!1sid!2sid"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4031.1794545023517!2d101.41875517501234!3d0.5699739994244564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5ab002fc90665%3A0xc78837c4d4dc0e29!2sAyam%20Geprek%20Qiana!5e1!3m2!1sen!2sid!4v1737217876442!5m2!1sen!2sid""
                         allowfullscreen>
                     </iframe>
                 </div>
