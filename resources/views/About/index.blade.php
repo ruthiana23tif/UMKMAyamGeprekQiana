@@ -1,31 +1,89 @@
-<x-app-layout>
-    <div class="max-w-4xl mx-auto py-6">
-        <h1 style="background-color: rgb(205, 35, 35);  padding: 20px; min-height: 70px;"
-        class="text-2xl font-bold text-center text-white mb-4">About Us</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .about-item {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
 
-        @if (session('success'))
-            <div class="bg-green-500 text-white p-3 mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
+        .about-item:nth-child(odd) {
+            flex-direction: row;
+        }
 
-        <a href="{{ route('about.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mb-4">
-            Tambah About
-        </a>
+        .about-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        .about-image {
+            flex: 1;
+            max-width: 45%;
+            margin-right: 20px;
+        }
+
+        .about-content {
+            flex: 1;
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .about-content p {
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .about-content .actions {
+            margin-top: 15px;
+        }
+
+        .actions button, .actions a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 style="background-color: rgb(205, 35, 35); padding: 20px; min-height: 70px;" class="text-2xl font-bold text-center text-white mb-4">About Us</h1>
+
+        <!-- Success Message -->
+        <div class="alert alert-success" style="display: none;">About berhasil ditambahkan!</div>
+
+        <!-- Tambah About Button -->
+        <a href="{{ route('about.create') }}" class="btn btn-primary mb-4">Tambah About</a>
+
+        <!-- About List -->
+        <div class="about-list">
             @foreach ($about as $about)
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                    <img src="{{ Storage::url($about->image) }}" class="w-full h-48 object-cover" alt="{{ $about->title }}" />
-                    <div class="p-4">
-                        <h2 class="text-lg font-bold">{{ $about->title }}</h2>
-                        <p class="text-gray-600 mt-2">{{ $about->description }}</p>
-                        <div class="mt-4 flex items-center space-x-2">
-                            <a href="{{ route('about.edit', $about->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-600">Edit</a>
-                            <form action="{{ route('about.destroy', $about->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                <div class="about-item">
+                    <!-- Image Section -->
+                    <div class="about-image">
+                        <img src="{{ Storage::url($about->image) }}" alt="{{ $about->title }}" class="img-fluid rounded shadow">
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="about-content">
+                        <h2>{{ $about->title }}</h2>
+                        <p>{{ $about->description }}</p>
+
+                        <!-- Action Buttons -->
+                        <div class="actions">
+                            <a href="{{ route('about.edit', $about->id) }}" class="btn btn-success">Edit</a>
+                            <form action="{{ route('about.destroy', $about->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-green-500">Hapus</button>
+                                <button type="submit" class="btn btn-danger">Hapus</button>
                             </form>
                         </div>
                     </div>
@@ -33,4 +91,7 @@
             @endforeach
         </div>
     </div>
-</x-app-layout>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
