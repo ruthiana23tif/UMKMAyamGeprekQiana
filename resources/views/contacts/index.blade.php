@@ -2,13 +2,6 @@
     <!-- Bagian Formulir Kontak -->
     <div style="max-width: 900px; margin: 20px auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
         <h1 style="text-align: center; color: #9a060b;">Contact Us</h1>
-        <!-- Tombol/Logo Google Maps -->
-        <div style="text-align: center; margin-bottom: 20px;">
-        <a href="https://maps.app.goo.gl/ozuURouNyihRTCYp9" target="_blank" style="display: inline-block;">
-                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google Maps" style="width: 50px; height: 50px; border-radius: 50%; display: block; margin: 0 auto;">
-               <span style="display: block; margin-top: 5px; font-size: 14px; color: #555;">Open on Maps</span>
-            </a>
-        </div>
         <p style="text-align: center; color: #555;">Ada pertanyaan atau komentar? Cukup tulis pesan kepada kami!</p>
 
         <div style="display: flex; flex-wrap: wrap; gap: 20px;">
@@ -19,6 +12,18 @@
                 <p><strong>📞 0812-1111-8456</strong></p>
                 <p><strong>📧 geprekqiana@gmail.com</strong></p>
                 <p>🏢 Jl. Kartika Sari, Umban Sari, Kec. Rumbai, Kota Pekanbaru, Riau 28266<br></p>
+
+                <!-- Embed Google Maps -->
+                <div style="margin-top: 20px; border-radius: 8px; overflow: hidden;">
+                    <iframe
+                        width="100%"
+                        height="300"
+                        frameborder="0"
+                        style="border:0"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.446985122184!2d101.4318536750758!3d0.539188363518004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a9d0d75b026d%3A0xd6a921283c54a247!2sGeprek%20Qiana!5e0!3m2!1sid!2sid!4v1711010841753!5m2!1sid!2sid"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
 
             <!-- Contact Form -->
