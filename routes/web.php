@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('menu', MenuController::class)->only(['index', 'store']);
+Route::resource('menu', MenuController::class)->only(['index', 'store','edit','destroy','update']);
 
 Route::resource('question_answer', QuestionAnswerController::class)->only(['index','store','edit','update','destroy']);
 require __DIR__.'/auth.php';
