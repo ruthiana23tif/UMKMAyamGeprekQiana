@@ -163,7 +163,7 @@
                     </div>
                 @endforeach
                @else
-                 <p>Menu Yang Anda Cari Tidak Ditemukan</p>
+                 <p>Menu Tidak Ada</p>
                @endif
             </div>
         </div>
