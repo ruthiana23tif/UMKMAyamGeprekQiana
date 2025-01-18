@@ -211,7 +211,7 @@
                 @foreach($menus as $menu)
                     <div class="menu-card">
                          @if($menu->gambar)
-                            <img src="{{ asset('storage/' . $menu->gambar) }}" class="card-img-top" alt="{{ $menu->nama }}">
+                            <img src="{{ asset('image/' . $menu->gambar) }}" class="card-img-top" alt="{{ $menu->nama }}">
                          @else
                            <img src="https://placehold.co/600x400/ededed/4b4b4b?text=No+Image" class="card-img-top" alt="No Image">
                          @endif
