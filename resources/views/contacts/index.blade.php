@@ -2,7 +2,14 @@
     <!-- Bagian Formulir Kontak -->
     <div style="max-width: 900px; margin: 20px auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
         <h1 style="text-align: center; color: #9a060b;">Contact Us</h1>
-        <p style="text-align: center; color: #555;">Any question or remarks? Just write us a message!</p>
+        <!-- Tombol/Logo Google Maps -->
+        <div style="text-align: center; margin-bottom: 20px;">
+        <a href="https://maps.app.goo.gl/ozuURouNyihRTCYp9" target="_blank" style="display: inline-block;">
+                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google Maps" style="width: 50px; height: 50px; border-radius: 50%; display: block; margin: 0 auto;">
+               <span style="display: block; margin-top: 5px; font-size: 14px; color: #555;">Open on Maps</span>
+            </a>
+        </div>
+        <p style="text-align: center; color: #555;">Ada pertanyaan atau komentar? Cukup tulis pesan kepada kami!</p>
 
         <div style="display: flex; flex-wrap: wrap; gap: 20px;">
             <!-- Contact Information -->
