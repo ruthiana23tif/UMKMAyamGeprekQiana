@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Storage;
 class TestimoniController extends Controller
 {
     public function index()
-    {
-        $testimonis = Testimoni::all();
-        return view('testimoni.index', compact('testimonis'));
-    }
+{
+    $testimonis = Testimoni::all(); // Mengambil semua data testimoni
+    return view('testimoni.index', compact('testimonis'));
+}
+
 
     public function create()
     {
@@ -34,7 +35,7 @@ class TestimoniController extends Controller
         $testimoni->testi = $request->testi;
 
         if ($request->hasFile('gambar')) {
-            $testimoni->gambar = $request->file('gambar')->store('testimoni', 'public');
+            $testimoni->gambar = $request->file('gambar')->store('images', 'public');
         }
 
         $testimoni->save();

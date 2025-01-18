@@ -1,9 +1,17 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GeserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\HomeController;
+
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::resource('geser', GeserController::class);
 
 Route::resource('testimoni', TestimoniController::class);
 
@@ -15,13 +23,16 @@ Route::get('/test-upload', function () {
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [SliderController::class, 'dashboard'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

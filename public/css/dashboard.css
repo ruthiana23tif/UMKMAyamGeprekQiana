@@ -1,0 +1,45 @@
+/* Bungkus gambar untuk pengaturan posisi */
+.img-wrapper {
+    position: relative; /* Untuk memposisikan elemen anak */
+    width: 100%; /* Pastikan elemen wrapper memenuhi lebar slider */
+    height: 500px; /* Sesuaikan tinggi slider */
+    display: flex; /* Menggunakan flexbox untuk rata tengah */
+    justify-content: center; /* Rata tengah horizontal */
+    align-items: center; /* Rata tengah vertikal */
+    overflow: hidden; /* Sembunyikan bagian gambar yang keluar */
+    background-color: #f8f9fa; /* Opsional: Tambahkan warna latar jika diperlukan */
+}
+
+/* Gambar responsif */
+.img-custom {
+    max-height: 100%; /* Sesuaikan dengan tinggi wrapper */
+    max-width: 100%; /* Sesuaikan dengan lebar wrapper */
+    object-fit: contain; /* Pastikan gambar tidak terpotong */
+}
+
+/* Gaya untuk judul (h5) */
+.carousel-caption h5 {
+    font-size: 24px; /* Atur ukuran teks judul (lebih besar) */
+    font-weight: bold; /* Buat teks judul menjadi tebal */
+    color: #ffffff; /* Opsional: Ubah warna teks menjadi putih */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Opsional: Tambahkan bayangan teks agar terlihat lebih jelas */
+}
+
+/* Gaya untuk paragraf (p) */
+.carousel-caption p {
+    font-size: 18px; /* Atur ukuran teks deskripsi (lebih besar) */
+    font-weight: bold; /* Buat teks deskripsi menjadi tebal */
+    color: #ffffff; /* Opsional: Ubah warna teks menjadi putih */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Opsional: Tambahkan bayangan teks agar terlihat lebih jelas */
+}
+/* Ubah warna ikon panah kiri */
+.carousel-control-prev-icon {
+    background-color: red; /* Ganti warna panah kiri menjadi merah */
+    border-radius: 50%; /* Opsional: Buat lingkaran jika diinginkan */
+}
+
+/* Ubah warna ikon panah kanan */
+.carousel-control-next-icon {
+    background-color: red; /* Ganti warna panah kanan menjadi merah */
+    border-radius: 50%; /* Opsional: Buat lingkaran jika diinginkan */
+}
