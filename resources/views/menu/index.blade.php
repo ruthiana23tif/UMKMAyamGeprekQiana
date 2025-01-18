@@ -85,13 +85,27 @@
        }
        .back-button{
             padding: 10px 15px;
-            background-color: #2005b7;
+            background-color: #0661b0;
             border: none;
             border-radius: 5px;
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
             margin-left: 10px;
+        }
+
+        .alert-success {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-success .close-button {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            line-height: 1;
         }
     </style>
 </head>
@@ -109,7 +123,10 @@
          @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
-             </div>
+               <button type="button" class="close-button" data-bs-dismiss="alert" aria-label="Close">
+                   ×
+               </button>
+            </div>
          @endif
         <div class="form-add-menu">
             <h1>Tambah Menu</h1>
@@ -163,7 +180,7 @@
                     </div>
                 @endforeach
                @else
-                 <p>Menu Tidak Ada</p>
+                 <p>Menu Yang Anda Cari Tidak Ditemukan</p>
                @endif
             </div>
         </div>
