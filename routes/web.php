@@ -22,8 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', [MenuController::class, 'index'])->name('menu.index');
-Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+Route::resource('menu', MenuController::class)->only(['index', 'store']);
 
 Route::resource('question_answer', QuestionAnswerController::class)->only(['index','store','edit','update','destroy']);
 require __DIR__.'/auth.php';
