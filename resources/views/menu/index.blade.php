@@ -38,10 +38,15 @@
             flex-direction: column; /* Make it a column */
             justify-content: space-between; /* Space between content and buttons */
          }
-        .form-add-menu{
+         .form-add-menu{
             margin-bottom: 20px;
-             margin-top: 20px;
-        }
+            margin-top: 10px; /* Mengurangi margin atas */
+         }
+         .form-add-menu h1{
+            margin-bottom: 15px; /* Mengurangi jarak antara judul dan form */
+             margin-top: -15px; /* Menaikkan judul */
+         }
+
         .menu-container {
             background: linear-gradient(to bottom, #ffffff, #f9f7f7);
              padding-bottom: 30px;
@@ -52,39 +57,53 @@
              justify-content: space-between;
          }
 
-         .search-bar-container {
-          margin: 10px 0;
-          padding: 5px 0;
+       .search-bar-container {
+           margin: 10px 0;
+           padding: 5px 0;
            display: flex;
-           justify-content: end;
+           justify-content: center; /* Menjaga agar search bar tetap di tengah */
            align-items: center;
          }
-          .search-bar-container input{
-             border: 1px solid #ddd;
-             border-radius: 4px;
-             padding: 10px;
-             width: 300px;
-             background: white;
-         }
-         .search-bar-container button{
-             padding: 10px 15px;
-             background-color: #af1515;
-             border: none;
-             border-radius: 5px;
-             color: #ffffff;
-             cursor: pointer;
-             margin-left: 10px;
-         }
+       .search-bar-container .search-form{
+           display: flex;
+           margin-right: 10px; /* Memberi jarak ke tombol kembali */
+        }
+        .search-bar-container input{
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            width: 300px;
+            background: white;
+        }
+       .search-bar-container button{
+           padding: 10px 15px;
+           background-color: #af1515;
+           border: none;
+           border-radius: 5px;
+           color: #ffffff;
+           cursor: pointer;
+       }
+       .back-button{
+            padding: 10px 15px;
+            background-color: #2005b7;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-         <div class="search-bar-container">
-            <form action="{{ route('menu.index') }}" method="GET">
+        <div class="search-bar-container">
+            <form action="{{ route('menu.index') }}" method="GET" class="search-form">
                <input type="text" placeholder="Cari menu..." name="search">
                <button type="submit" class="btn btn-primary">Cari</button>
-           </form>
+            </form>
+            <a href="{{ route('menu.index') }}" class="back-button">Kembali</a>
         </div>
         <div class="container mt-4">
          @if(session('success'))
@@ -93,7 +112,7 @@
              </div>
          @endif
         <div class="form-add-menu">
-             <h1>Tambah Menu</h1>
+            <h1>Tambah Menu</h1>
             <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
