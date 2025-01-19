@@ -75,16 +75,18 @@ class ContactController extends Controller
         ]);
 
         $contact->update($request->all()); // Memperbarui data kontak
-        return redirect()->route('contact.index')->with('success', 'Contact updated successfully.');
+        return redirect()->route('contact.index')->with('success', 'Update Berhasil.');
     }
 
     /**
      * Remove the specified resource from storage.
      * Menghapus kontak tertentu dari database.
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        $contact->delete(); // Menghapus kontak
-        return redirect()->route('contact.index')->with('success', 'Contact deleted successfully.');
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return redirect()->route('contact.index')->with('success', 'Pesan berhasil dihapus!');
     }
 }
