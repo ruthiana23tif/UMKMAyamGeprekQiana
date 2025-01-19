@@ -46,13 +46,21 @@
     <div style="max-width: 900px; margin: 20px auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
 
             @foreach ($contacts as $cont)
-                <div style="padding: 15px; margin-bottom: 15px; background-color: #f5f5f5; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: left">
+                <div style="padding: 15px; margin-bottom: 15px; background-color: #f5f5f5; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: left; position: relative;">
                     <p style="margin: 0; font-size: 16px; color: #333;"><strong>Name:</strong> {{ $cont->nama }}</p>
                     <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>Email:</strong> {{ $cont->email }}</p>
                     <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>Phone:</strong> {{ $cont->phone_number }}</p>
                     <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>Message:</strong> {{ $cont->message }}</p>
+
+                    <div style="position: absolute; top: 5px; right: 5px;">
+                        <a href="{{ route('contact.edit', $cont->id) }}" style="text-decoration: none; margin-right: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border-radius: 4px; font-size: 12px;">Edit</a>
+                            <form action="{{ route('contact.destroy', $cont->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; cursor: pointer;" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</button>
+                        </form>
+                    </div>
                 </div>
             @endforeach
-
     </div>
 </body>

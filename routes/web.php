@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 
-Route::resource('contact', ContactController::class)->only(['index', 'store']);
+Route::resource('contact', ContactController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

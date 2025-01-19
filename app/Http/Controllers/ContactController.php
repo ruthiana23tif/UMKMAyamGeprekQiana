@@ -75,7 +75,7 @@ class ContactController extends Controller
         ]);
 
         $contact->update($request->all()); // Memperbarui data kontak
-        return redirect()->route('contacts.index')->with('success', 'Contact updated successfully.');
+        return redirect()->route('contact.index')->with('success', 'Contact updated successfully.');
     }
 
     /**
@@ -85,6 +85,6 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete(); // Menghapus kontak
-        return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
+        return redirect()->route('contact.index')->with('success', 'Contact deleted successfully.');
     }
 }
