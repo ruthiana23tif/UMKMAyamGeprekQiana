@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Promo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Edit Promo</h1>
+<x-app-layout>
+    <div class="max-w-4xl mx-auto py-6">
+        <h1 style="background-color: rgb(227, 234, 36); padding: 20px; min-height: 70px;" class="text-2xl font-bold text-center text-black mb-4">
+            Edit Promo
+        </h1>
 
         @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
+            <div class="bg-red-500 text-white p-3 mb-4 rounded">
+                <ul class="list-disc pl-5">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -20,50 +14,55 @@
             </div>
         @endif
 
-        <!-- Tambahkan enctype untuk mendukung pengunggahan file -->
-        <form action="{{ route('promo.update', $promo->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('promo.update', $promo->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             @method('PUT')
 
-            <div class="mb-3">
-                <label for="title" class="form-label">Judul Promo</label>
-                <input type="text" name="title" id="title" class="form-control" value="{{ old('title', $promo->title) }}" required>
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700">Judul Promo</label>
+                <input type="text" name="title" id="title" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" value="{{ old('title', $promo->title) }}" required>
             </div>
 
-            <div class="mb-3">
-                <label for="description" class="form-label">Deskripsi</label>
-                <textarea name="description" id="description" class="form-control" required>{{ old('description', $promo->description) }}</textarea>
+            <div>
+                <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                <textarea name="description" id="description" rows="4" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>{{ old('description', $promo->description) }}</textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="discount" class="form-label">Diskon(%)</label>
-                <input type="number" name="discount" id="discount" class="form-control" value="{{ old('discount', $promo->discount) }}" required>
+            <div>
+                <label for="discount" class="block text-sm font-medium text-gray-700">Diskon (%)</label>
+                <input type="number" name="discount" id="discount" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" value="{{ old('discount', $promo->discount) }}" required>
             </div>
 
-            <div class="mb-3">
-                <label for="start_date" class="form-label">Tanggal Mulai</label>
-                <input type="date" name="start_date" id="start_date" class="form-control" value="{{ old('start_date', $promo->start_date) }}" required>
+            <div>
+                <label for="start_date" class="block text-sm font-medium text-gray-700">Tanggal Mulai</label>
+                <input type="date" name="start_date" id="start_date" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" value="{{ old('start_date', $promo->start_date) }}" required>
             </div>
 
-            <div class="mb-3">
-                <label for="end_date" class="form-label">Tanggal Berakhir</label>
-                <input type="date" name="end_date" id="end_date" class="form-control" value="{{ old('end_date', $promo->end_date) }}" required>
+            <div>
+                <label for="end_date" class="block text-sm font-medium text-gray-700">Tanggal Berakhir</label>
+                <input type="date" name="end_date" id="end_date" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" value="{{ old('end_date', $promo->end_date) }}" required>
             </div>
 
-            <div class="mb-4">
-                <label for="gambar" class="form-label">Gambar</label>
-                <input type="file" name="gambar" id="gambar" class="form-control" accept="image/*">
+            <div>
+                <label for="gambar" class="block text-sm font-medium text-gray-700">Gambar</label>
+                <input type="file" name="gambar" id="gambar" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" accept="image/*">
                 @if ($promo->gambar)
                     <div class="mt-2">
-                        <p>Gambar Saat Ini:</p>
+                        <p class="text-sm text-gray-500">Gambar Saat Ini:</p>
                         <img src="{{ Storage::url($promo->gambar) }}" alt="Gambar promo" class="img-fluid" style="max-height: 200px;">
                     </div>
                 @endif
             </div>
 
-            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-            <a href="{{ route('promo.index') }}" class="btn btn-secondary">Kembali</a>
+            <div class="flex space-x-4 mt-4">
+                <button type="submit"
+                    class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+                    Simpan Perubahan
+                </button>
+                <a href="{{ route('promo.index') }}"
+                    class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+                    Kembali
+                </a>
         </form>
     </div>
-</body>
-</html>
+</x-app-layout>
