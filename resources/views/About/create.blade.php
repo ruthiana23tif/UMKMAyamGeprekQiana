@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah About Us</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Tambah About Us</h1>
+<x-app-layout>
+    <div class="max-w-4xl mx-auto py-6">
+        <h1 style="background-color: rgb(205, 35, 35); padding: 20px; min-height: 70px;" class="text-2xl font-bold text-center text-white mb-4">Tambah About Us</h1>
+
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="bg-red-500 text-white p-3 mb-4">
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -19,28 +12,28 @@
             </div>
         @endif
 
-        <!-- Perhatikan action URL sesuai backend -->
-        <form action="{{ route('about.store') }}" method="POST" enctype="multipart/form-data">
-            <!-- CSRF Token digantikan hanya jika digunakan di luar Laravel -->
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <form action="{{ route('about.store') }}" method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded-lg p-6">
+            @csrf
 
-            <div class="mb-3">
-                <label for="title" class="form-label">Judul</label>
-                <input type="text" name="title" id="title" class="form-control" required>
+            <div class="mb-4">
+                <label for="title" class="block text-sm font-medium text-gray-700">Judul</label>
+                <input type="text" name="title" id="title" class="block w-full mt-2 border-gray-300 rounded-md" required>
             </div>
 
-            <div class="mb-3">
-                <label for="description" class="form-label">Deskripsi</label>
-                <textarea name="description" id="description" rows="4" class="form-control" required></textarea>
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                <textarea name="description" id="editor" rows="4" class="block w-full mt-2 border-gray-300 rounded-md" required></textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="image" class="form-label">Gambar</label>
-                <input type="file" name="image" id="image" class="form-control">
+            <div class="mb-4">
+                <label for="image" class="block text-sm font-medium text-gray-700">Gambar</label>
+                <input type="file" name="image" id="image" class="block w-full mt-2 border-gray-300 rounded-md" accept="image/*" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <div class="flex space-x-2">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Simpan</button>
+                <a href="{{ route('about.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Kembali</a>
+            </div>
         </form>
     </div>
-</body>
-</html>
+</x-app-layout>

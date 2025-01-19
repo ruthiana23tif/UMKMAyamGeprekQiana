@@ -1,7 +1,9 @@
 <x-app-layout>
     <div class="max-w-4xl mx-auto py-6">
-        <h1 style="background-color: rgb(227, 234, 36);  padding: 20px; min-height: 70px;"
-        class="text-2xl font-bold text-center text-black mb-4">Daftar Promo</h1>
+        <h1 style="background-color: rgb(227, 234, 36); padding: 20px; min-height: 70px;"
+            class="text-2xl font-bold text-center text-black mb-4">
+            Daftar Promo
+        </h1>
 
         @if (session('success'))
             <div class="bg-green-500 text-white p-3 mb-4">
