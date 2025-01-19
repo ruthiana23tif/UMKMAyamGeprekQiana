@@ -173,7 +173,7 @@
 
             <!-- Contact Form -->
             <div class="contact-form">
-                <form action="{{ route('contact.store') }}" method="post" onsubmit="showNotification('success', 'Pesan Berhasil Dikirim!')">
+                <form action="{{ route('contact.store') }}" method="post" onsubmit="showNotification('success')">
                     @csrf
                     <input type="text" name="nama" placeholder="Name" required>
                     <input type="email" name="email" placeholder="Email" required>

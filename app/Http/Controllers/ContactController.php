@@ -40,7 +40,7 @@ class ContactController extends Controller
         ]);
 
         Contact::create($request->all()); // Menyimpan data kontak
-        return redirect()->route('contact.index')->with('success', 'Contact created successfully.');
+        return redirect()->route('contact.index')->with('success', 'Pertanyaan atau Ulasan Berhasil!.');
     }
 
     /**
