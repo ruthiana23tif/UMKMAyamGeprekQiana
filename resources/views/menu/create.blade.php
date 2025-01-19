@@ -18,7 +18,7 @@
 
          .back-button{
             padding: 10px 15px;
-            background-color: #0661b0;
+            background-color: #da7604;
             border: none;
             border-radius: 5px;
             color: #ffffff;
@@ -58,7 +58,7 @@
                     <label for="gambar" class="form-label">Gambar Menu</label>
                     <input type="file" class="form-control" id="gambar" name="gambar">
                 </div>
-                <button type="submit" class="btn btn-primary">Tambah Menu</button>
+                <button type="submit" class="btn btn-primary">Menambahkan Menu</button>
             </form>
        </div>
     </div>

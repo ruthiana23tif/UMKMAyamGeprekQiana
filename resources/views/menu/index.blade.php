@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .card-img-top {
+         .card-img-top {
             height: 180px;
             object-fit: cover;
         }
@@ -41,7 +41,8 @@
          }
         .menu-container {
             background: linear-gradient(to bottom, #ffffff, #f9f7f7);
-             padding-bottom: 30px;
+            padding-bottom: 30px;
+             text-align: center;  /* Membuat judul menu berada di tengah */
          }
          .menu-card-action{
             margin-top: 10px; /* Tambahkan margin di atas button */
@@ -58,7 +59,7 @@
          }
        .search-bar-container .search-form{
            display: flex;
-           margin-right: 10px; /* Memberi jarak ke tombol kembali */
+          /* margin-right: 10px;  Memberi jarak ke tombol kembali */
         }
         .search-bar-container input{
             border: 1px solid #ddd;
@@ -75,19 +76,9 @@
            color: #ffffff;
            cursor: pointer;
        }
-       .back-button{
-            padding: 10px 15px;
-            background-color: #0661b0;
-            border: none;
-            border-radius: 5px;
-            color: #ffffff;
-            cursor: pointer;
-            text-decoration: none;
-            margin-left: 10px;
-        }
-        .add-menu-button{
+       .add-menu-button{
            padding: 10px 15px;
-           background-color: #c10707;
+           background-color: #d20303;
            border: none;
            border-radius: 5px;
            color: #ffffff;
@@ -118,7 +109,7 @@
                <input type="text" placeholder="Cari menu..." name="search">
                <button type="submit" class="btn btn-primary">Cari</button>
             </form>
-            <a href="{{ route('menu.index') }}" class="back-button">Kembali</a>
+           {{--  <a href="{{ route('menu.index') }}" class="back-button">Kembali</a> --}}
         </div>
         <div class="container mt-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -130,7 +121,7 @@
                    </button>
                 </div>
                @endif
-               <a href="{{ route('menu.create') }}" class="add-menu-button">Tambah Menu</a>
+               <a href="{{ route('menu.create') }}" class="add-menu-button">Tambahkan Menu</a>
             </div>
         <div class="menu-container">
            <h1 class="mt-4">Menu Makanan</h1>
