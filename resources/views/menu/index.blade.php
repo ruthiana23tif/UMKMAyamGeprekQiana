@@ -1,3 +1,4 @@
+<!-- resources/views/menu/index.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,15 +39,6 @@
             flex-direction: column; /* Make it a column */
             justify-content: space-between; /* Space between content and buttons */
          }
-         .form-add-menu{
-            margin-bottom: 20px;
-            margin-top: 10px; /* Mengurangi margin atas */
-         }
-         .form-add-menu h1{
-            margin-bottom: 15px; /* Mengurangi jarak antara judul dan form */
-             margin-top: -15px; /* Menaikkan judul */
-         }
-
         .menu-container {
             background: linear-gradient(to bottom, #ffffff, #f9f7f7);
              padding-bottom: 30px;
@@ -93,6 +85,15 @@
             text-decoration: none;
             margin-left: 10px;
         }
+        .add-menu-button{
+           padding: 10px 15px;
+           background-color: #198754;
+           border: none;
+           border-radius: 5px;
+           color: #ffffff;
+           cursor: pointer;
+           text-decoration: none;
+        }
 
         .alert-success {
             display: flex;
@@ -120,37 +121,17 @@
             <a href="{{ route('menu.index') }}" class="back-button">Kembali</a>
         </div>
         <div class="container mt-4">
-         @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-               <button type="button" class="close-button" data-bs-dismiss="alert" aria-label="Close">
-                   ×
-               </button>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                   <button type="button" class="close-button" data-bs-dismiss="alert" aria-label="Close">
+                       ×
+                   </button>
+                </div>
+               @endif
+               <a href="{{ route('menu.create') }}" class="add-menu-button">Tambah Menu</a>
             </div>
-         @endif
-        <div class="form-add-menu">
-            <h1>Tambah Menu</h1>
-            <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                    <label for="nama" class="form-label">Nama Menu</label>
-                    <input type="text" class="form-control" id="nama" name="nama" required>
-                </div>
-                <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi Menu</label>
-                    <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="harga" class="form-label">Harga</label>
-                    <input type="number" class="form-control" id="harga" name="harga" required>
-                </div>
-                <div class="mb-3">
-                    <label for="gambar" class="form-label">Gambar Menu</label>
-                    <input type="file" class="form-control" id="gambar" name="gambar">
-                </div>
-                <button type="submit" class="btn btn-primary">Tambah Menu</button>
-            </form>
-       </div>
         <div class="menu-container">
            <h1 class="mt-4">Menu Makanan</h1>
             <div class="menu-card-container">

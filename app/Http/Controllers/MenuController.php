@@ -26,6 +26,11 @@ class MenuController extends Controller
         return view('menu.edit', compact('menu'));
     }
 
+    public function create()
+    {
+    return view('menu.create');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
