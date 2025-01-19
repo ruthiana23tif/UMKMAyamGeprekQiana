@@ -1,162 +1,58 @@
-<!-- resources/views/menu/index.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Makanan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-         .card-img-top {
-            height: 180px;
-            object-fit: cover;
-        }
-         .card{
-             border-radius: 15px;
-         }
-
-        .menu-card-container{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around; /* Untuk menyebarkan card */
-            gap: 20px; /* Untuk memberikan jarak antar card */
-        }
-        .menu-card{
-            width: 220px;
-            background-color: #f8fcff;
-            border-radius: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .menu-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        .card-body{
-            padding: 15px;
-            display: flex; /* Add flexbox */
-            flex-direction: column; /* Make it a column */
-            justify-content: space-between; /* Space between content and buttons */
-         }
-        .menu-container {
-            background: linear-gradient(to bottom, #ffffff, #f9f7f7);
-            padding-bottom: 30px;
-             text-align: center;  /* Membuat judul menu berada di tengah */
-         }
-         .menu-card-action{
-            margin-top: 10px; /* Tambahkan margin di atas button */
-             display: flex;
-             justify-content: space-between;
-         }
-
-       .search-bar-container {
-           margin: 10px 0;
-           padding: 5px 0;
-           display: flex;
-           justify-content: center; /* Menjaga agar search bar tetap di tengah */
-           align-items: center;
-         }
-       .search-bar-container .search-form{
-           display: flex;
-          /* margin-right: 10px;  Memberi jarak ke tombol kembali */
-        }
-        .search-bar-container input{
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 10px;
-            width: 300px;
-            background: white;
-        }
-       .search-bar-container button{
-           padding: 10px 15px;
-           background-color: #af1515;
-           border: none;
-           border-radius: 5px;
-           color: #ffffff;
-           cursor: pointer;
-       }
-       .add-menu-button{
-           padding: 10px 15px;
-           background-color: #d20303;
-           border: none;
-           border-radius: 5px;
-           color: #ffffff;
-           cursor: pointer;
-           text-decoration: none;
-        }
-
-        .alert-success {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .alert-success .close-button {
-            background: none;
-            border: none;
-            font-size: 1.5em;
-            cursor: pointer;
-            line-height: 1;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="search-bar-container">
-            <form action="{{ route('menu.index') }}" method="GET" class="search-form">
-               <input type="text" placeholder="Cari menu..." name="search">
-               <button type="submit" class="btn btn-primary">Cari</button>
-            </form>
-           {{--  <a href="{{ route('menu.index') }}" class="back-button">Kembali</a> --}}
-        </div>
-        <div class="container mt-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                   <button type="button" class="close-button" data-bs-dismiss="alert" aria-label="Close">
-                       ×
-                   </button>
-                </div>
-               @endif
-               <a href="{{ route('menu.create') }}" class="add-menu-button">Tambahkan Menu</a>
+<x-app-layout>
+    <div class="max-w-4xl mx-auto py-6">
+        <!-- Navbar -->
+        <nav class="bg-blue-500 text-white p-4 rounded mb-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Menu Makanan</h1>
+            <div>
+                <a href="{{ route('menu.create') }}" class="bg-green-500 px-4 py-2 rounded text-white hover:bg-green-600">
+                    Tambah Menu
+                </a>
             </div>
-        <div class="menu-container">
-           <h1 class="mt-4">Menu Makanan</h1>
-            <div class="menu-card-container">
-                @if($menus->count() > 0)
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="mb-4">
+            <form action="{{ route('menu.index') }}" method="GET" class="flex">
+                <input type="text" name="search" placeholder="Cari menu..." class="flex-1 p-2 border border-gray-300 rounded-l">
+                <button type="submit" class="bg-blue-500 px-4 py-2 text-white rounded-r hover:bg-blue-600">Cari</button>
+            </form>
+        </div>
+
+        <!-- Success Message -->
+        @if(session('success'))
+            <div class="bg-green-500 text-white p-3 mb-4 rounded">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- Menu List -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            @if($menus->count() > 0)
                 @foreach($menus as $menu)
-                    <div class="menu-card">
+                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
                         @if($menu->gambar)
-                        <img src="{{ asset('image/' . $menu->gambar) }}" class="card-img-top" alt="{{ $menu->nama }}">
-                     @else
-                       <img src="https://placehold.co/600x400/ededed/4b4b4b?text=No+Image" class="card-img-top" alt="No Image">
-                     @endif
-                        <div class="card-body">
-                            <div>
-                                <h5 class="card-title">{{ $menu->nama }}</h5>
-                                <p class="card-text">{{ $menu->deskripsi }}</p>
-                                <p class="card-text">Harga: Rp {{ number_format($menu->harga, 0, ',', '.') }}</p>
-                            </div>
-                            <div class="menu-card-action">
-                                 <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('menu.destroy', $menu->id) }}" method="POST" style="display: inline-block;">
+                            <img src="{{ asset('image/' . $menu->gambar) }}" class="w-full h-48 object-cover" alt="{{ $menu->nama }}">
+                        @else
+                            <img src="https://placehold.co/600x400/ededed/4b4b4b?text=No+Image" class="w-full h-48 object-cover" alt="No Image">
+                        @endif
+                        <div class="p-4">
+                            <h2 class="text-lg font-bold">{{ $menu->nama }}</h2>
+                            <p class="text-gray-600 mt-2">{{ $menu->deskripsi }}</p>
+                            <p class="text-gray-500 text-sm mt-1">Harga: Rp {{ number_format($menu->harga, 0, ',', '.') }}</p>
+                            <div class="mt-4 flex justify-between">
+                                <a href="{{ route('menu.edit', $menu->id) }}" class="bg-yellow-500 px-4 py-2 rounded text-white hover:bg-yellow-600">Edit</a>
+                                <form action="{{ route('menu.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus menu ini?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus menu ini?')">Delete</button>
+                                    <button type="submit" class="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600">Hapus</button>
                                 </form>
-                           </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach
-               @else
-                 <p>Menu Tidak Ada</p>
-               @endif
-            </div>
+            @else
+                <p class="text-gray-500 text-center">Menu Tidak Ada</p>
+            @endif
         </div>
     </div>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</x-app-layout>

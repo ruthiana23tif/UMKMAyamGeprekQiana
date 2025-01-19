@@ -1,67 +1,58 @@
-<!-- resources/views/menu/create.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Menu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-     <style>
-          .form-add-menu{
-            margin-bottom: 20px;
-            margin-top: 10px; /* Mengurangi margin atas */
-         }
-         .form-add-menu h1{
-            margin-bottom: 15px; /* Mengurangi jarak antara judul dan form */
-             margin-top: -15px; /* Menaikkan judul */
-         }
+<x-app-layout>
+    <div class="max-w-4xl mx-auto py-6">
+        <h1 style="background-color: rgb(34, 150, 243); padding: 20px; min-height: 70px;"
+            class="text-2xl font-bold text-center text-white mb-4">Tambah Menu</h1>
 
-         .back-button{
-            padding: 10px 15px;
-            background-color: #da7604;
-            border: none;
-            border-radius: 5px;
-            color: #ffffff;
-            cursor: pointer;
-            text-decoration: none;
-            margin-left: 10px;
-           }
-        .container{
-           padding-bottom: 30px;
-           background: linear-gradient(to bottom, #ffffff, #f9f7f7);
-          }
+        @if ($errors->any())
+            <div class="bg-red-500 text-white p-3 mb-4">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-     </style>
-</head>
-<body>
-    <div class="container">
-       <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Tambah Menu</h1>
-            <a href="{{ route('menu.index') }}" class="back-button">Kembali</a>
-        </div>
-        <div class="form-add-menu">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-xl font-bold text-gray-700">Tambah Menu</h1>
+
+            </div>
+
             <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="mb-3">
-                    <label for="nama" class="form-label">Nama Menu</label>
-                    <input type="text" class="form-control" id="nama" name="nama" required>
+
+                <div class="mb-4">
+                    <label for="nama" class="block text-sm font-medium text-gray-700">Nama Menu</label>
+                    <input type="text" id="nama" name="nama"
+                        class="block w-full mt-2 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
                 </div>
-                <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi Menu</label>
-                    <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>
+
+                <div class="mb-4">
+                    <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi Menu</label>
+                    <textarea id="deskripsi" name="deskripsi"
+                        class="block w-full mt-2 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="harga" class="form-label">Harga</label>
-                    <input type="number" class="form-control" id="harga" name="harga" required>
+
+                <div class="mb-4">
+                    <label for="harga" class="block text-sm font-medium text-gray-700">Harga</label>
+                    <input type="number" id="harga" name="harga"
+                        class="block w-full mt-2 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
                 </div>
-                <div class="mb-3">
-                    <label for="gambar" class="form-label">Gambar Menu</label>
-                    <input type="file" class="form-control" id="gambar" name="gambar">
+
+                <div class="mb-4">
+                    <label for="gambar" class="block text-sm font-medium text-gray-700">Gambar Menu</label>
+                    <input type="file" id="gambar" name="gambar"
+                        class="block w-full mt-2 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" accept="image/*">
                 </div>
-                <button type="submit" class="btn btn-primary">Menambahkan Menu</button>
+
+                <div class="flex space-x-4">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Simpan Menu</button>
+                        <a href="{{ route('menu.index') }}"
+                   class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Kembali</a>
+                </div>
             </form>
-       </div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</x-app-layout>
