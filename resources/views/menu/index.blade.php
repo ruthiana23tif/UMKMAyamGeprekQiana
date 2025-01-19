@@ -87,7 +87,7 @@
         }
         .add-menu-button{
            padding: 10px 15px;
-           background-color: #198754;
+           background-color: #c10707;
            border: none;
            border-radius: 5px;
            color: #ffffff;
