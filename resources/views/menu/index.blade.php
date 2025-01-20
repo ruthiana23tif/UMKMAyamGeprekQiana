@@ -38,7 +38,7 @@
                         <div class="p-4">
                             <h2 class="text-lg font-bold">{{ $menu->nama }}</h2>
                             <p class="text-gray-600 mt-2">{{ $menu->deskripsi }}</p>
-                            <p class="text-gray-500 text-sm mt-1">Harga: Rp {{ number_format($menu->harga, 0, ',', '.') }}</p>
+                            <p class="text-red-500 text-sm mt-1">Harga: Rp {{ number_format($menu->harga, 0, ',', '.') }}</p>
                             <div class="mt-4 flex justify-between">
                                 <a href="{{ route('menu.edit', $menu->id) }}" class="bg-yellow-500 px-4 py-2 rounded text-white hover:bg-yellow-600">Edit</a>
                                 <form action="{{ route('menu.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus menu ini?');">
