@@ -33,6 +33,12 @@ class AboutController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Periksa apakah sudah ada data di tabel about
+        if (About::exists()) {
+            // Jika data sudah ada, kembalikan ke halaman index dengan pesan error
+            return redirect()->route('about.index')->with('error', 'About yang anda masukkan sudah ada!!.');
+        }
+
         // Validasi data input
         $request->validate([
             'title' => 'required|string|max:255',

@@ -2,15 +2,19 @@
     <div class="max-w-4xl mx-auto py-6">
         <h1 style="background-color: rgb(205, 35, 35); padding: 20px; min-height: 70px;" class="text-2xl font-bold text-center text-white mb-4">About Us</h1>
 
-        @if (session('success'))
-            <div class="bg-green-500 text-white p-3 mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
 
-        <a href="{{ route('about.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mb-4">
-            Tambah About
-        </a>
+       @if (session('error'))
+    <div class="bg-red-500 text-white p-3 mb-4 rounded">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="bg-green-500 text-white p-3 mb-4 rounded">
+        {{ session('success') }}
+    </div>
+@endif
+
 
         <div class="about-list grid gap-4">
             @foreach ($about as $key => $about)
